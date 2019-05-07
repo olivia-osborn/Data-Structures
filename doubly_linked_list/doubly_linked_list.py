@@ -72,9 +72,9 @@ class DoublyLinkedList:
             self.tail = None
             return self.head
         else:
-            old_head = ListNode(self.head.value)
-            old_head.delete()
-            self.head = old_head.prev
+            old_head = self.head
+            self.delete(self.head)
+            return old_head.value
 
     def add_to_tail(self, value):
         new_node = ListNode(value)
@@ -97,7 +97,8 @@ class DoublyLinkedList:
         pass
 
     def delete(self, node):
-        pass
+        deleted_node = ListNode(node)
+        deleted_node.delete()
 
     def get_max(self):
         pass
@@ -111,5 +112,6 @@ dll.add_to_head(5)
 dll.add_to_head(2)
 dll.add_to_head(1)
 dll.add_to_tail(9)
+dll.delete(9)
 
 print(dll)
