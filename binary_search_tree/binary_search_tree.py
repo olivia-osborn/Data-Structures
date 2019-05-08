@@ -35,19 +35,19 @@ class BinarySearchTree:
             if not self.left:
                 return False
             else:
-                self.left.contains(target)
+                return self.left.contains(target)
         elif target > self.value:
             if not self.right:
                 return False
             else:
-                self.right.contains(target)
+                return self.right.contains(target)
 
     def get_max(self):
         # check if self.value has no right child:
         if not self.right:
             return self.value
         else:
-            self.right.get_max()
+            return self.right.get_max()
 
     def for_each(self, cb):
         pass
