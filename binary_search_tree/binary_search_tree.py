@@ -1,3 +1,7 @@
+# right side is smaller
+# left side is bigger
+
+
 class BinarySearchTree:
     def __init__(self, value):
         self.value = value
@@ -23,10 +27,40 @@ class BinarySearchTree:
                 self.right.insert(value)
 
     def contains(self, target):
-        pass
+        # result = False
+        if target == self.value:
+            return True
+        elif target < self.value:
+            # check if no left child:
+            if not self.left:
+                return False
+            else:
+                self.left.contains(target)
+        elif target > self.value:
+            if not self.right:
+                return False
+            else:
+                self.right.contains(target)
 
     def get_max(self):
-        pass
+        # check if self.value has no right child:
+        if not self.right:
+            return self.value
+        else:
+            self.right.get_max()
 
     def for_each(self, cb):
         pass
+
+    def __str__(self):
+        return f'value: {self.value}, left: {self.left}, right: {self.right}: max: {self.get_max()}'
+
+
+bst = BinarySearchTree(10)
+bst.insert(5)
+bst.insert(12)
+bst.insert(19)
+bst.insert(11)
+bst.insert(55)
+# bst.get_max()
+print(bst)
